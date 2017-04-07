@@ -1,17 +1,40 @@
 {
-    "buildNpmdoc":"memdb-server",
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "buildNpmdoc": "memdb-server",
+    "description": "api documentation for [memdb-server (v0.5.7)](https://github.com/rain1017/memdb) [![npm package](https://img.shields.io/npm/v/npmdoc-memdb-server.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-memdb-server) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-memdb-server.svg)](https://travis-ci.org/npmdoc/node-npmdoc-memdb-server)",
     "devDependencies": {
-        "memdb-server": "*",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "memdb-server": "*",
         "utility2": "kaizhu256/node-utility2#alpha"
     },
-    "name":"npmdoc-memdb-server",
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-memdb-server",
+    "keywords": [
+        "documentation",
+        "memdb-server"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_memdb_server.js",
+    "name": "npmdoc-memdb-server",
+    "nameAlias": "npmdoc_memdb_server",
+    "nameOriginal": "npmdoc-memdb-server",
+    "os": [
+        "darwin",
+        "linux"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/npmdoc/node-npmdoc-memdb-server"
     },
     "scripts": {
-        "build-ci": "utility2 shReadmeTest build_ci.sh"
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "(set -e; npm install \"kaizhu256/node-utility2#alpha\"; utility2 shDeployHeroku)",
+        "postinstall": "if [ -f npm_scripts.sh ]; then ./npm_scripts.sh postinstall; fi",
+        "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
     "version": "0.0.1"
 }
